@@ -13,8 +13,8 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: fr
-    defaultlocale: en
+    defaultlocale: fr
 
-    secret: 5396b2c94868203ce7005883a4fd10cc9fc878c9
-    session_prefix: myproject
+    secret:  ThisTokenIsNotSoSecretChangeIt
+    session_prefix: czhotel
     doctrine.server_version: 5.6
