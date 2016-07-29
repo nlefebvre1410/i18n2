@@ -1,0 +1,59 @@
+{% spaceless %}<!DOCTYPE html>
+{% set htmlLocale = app.request.locale|default(defaultlocale)|slice(0,2) %}
+<!--[if lte IE 9]> <html class="no-js lt-ie9" lang="{{ htmlLocale }}"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="{{ htmlLocale }}"> <!--<![endif]-->
+<head {{ sonata_seo_head_attributes() }}>
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+    {{ sonata_seo_link_canonical() }}
+    {{ sonata_seo_lang_alternates() }}
+
+    {# Favicons #}
+    {% include '@CzI18bundle/Layout/_favicons.html.twig' %}
+
+    {# Webfonts #}
+    {% include 'CzHotelBundle:Layout:_webfonts.html.twig' %}
+
+    {# CSS #}
+    {% include '@'%}
+</head>
+{% endspaceless %}
+
+<body id="sidebar-toggle-container" class="sidebar-toggle-container{% block extra_body_classes %}{% endblock %}" {% block extra_body_attributes %}{% endblock %}>
+    {# Google Tagmanager #}
+    {% include '@CzI18bundle/Layout/_googletagmanager.html.twig' %}
+
+    {# Outdated browser message #}
+    {% include '@CzI18bundle/Layout/_outdatedbrowser.html.twig' %}
+
+
+    {# Header #}
+    {% block header %}
+        {% include '@CzI18bundle/Layout/_header.html.twig' %}
+    {% endblock %}
+
+    {# Breadcrumbs #}
+    {% block breadcrumbs %}
+        {% include '@CzI18bundle/Layout/_breadcrumbs.html.twig' %}
+    {% endblock %}
+
+    {# Content #}
+    <main role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    {# Footer #}
+    {% block footer %}
+        {% include '@CzI18bundle/Layout/_footer.html.twig' %}
+    {% endblock %}
+
+
+    {# Cookieconsent #}
+    {% block cookieconsent %}
+        {% include '@CzI18bundle/Layout/_cookieconsent.html.twig' %}
+    {% endblock %}
+
+    {# JS Footer #}
+    {% include '@CzI18bundle/Layout/_js_footer.html.twig' %}
+</body>
+</html>

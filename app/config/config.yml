@@ -1,0 +1,107 @@
+imports:
+    - { resource: config_base.yml }
+
+framework:
+    ide:                "phpstorm://open?file=%%f&line=%%l"
+    esi:                { enabled: true }
+    fragments:          { path: /_fragment }
+    translator:         { fallback: %locale% }
+    session:
+        name:               %session_prefix%
+        # set true if no scripting languages need to access the cookie
+        cookie_httponly:    false
+    assets:
+        version:     v1
+
+twig:
+    globals:
+#        websitetitle: %websitetitle%
+        defaultlocale: %defaultlocale%
+#        requiredlocales: %requiredlocales%
+#        gtm_code: %analytics.googletagmanager%
+        #titlecolor: "#000000"
+        #titlebgcolor: "#2997CE"
+
+assetic:
+    node: /usr/local/bin/node
+    filters:
+        cssrewrite: ~
+        scss: ~
+        uglifyjs2:
+            bin: /usr/bin/uglifyjs
+            compress: true
+        uglifycss:
+            bin: /usr/bin/uglifycss
+        yui_js:
+            jar: %kernel.root_dir%/Resources/tools/java/yuicompressor-2.4.8.jar
+        jpegoptim:
+            bin: jpegoptim
+            strip_all: true
+            max: 85
+            apply_to: "\\.jpe?g$"
+        optipng:
+            bin: optipng
+            apply_to: "\\.png$"
+            level: 3
+        jpegtran:
+            bin: jpegtran
+            apply_to: "\\.jpe?g$"
+            optimisation: true
+            progressive: true
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                auto_mapping: true
+                mappings:
+                    gedmo_translatable:
+                        type: annotation
+                        prefix: Gedmo\Translatable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_translator:
+                        type: annotation
+                        prefix: Gedmo\Translator\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                        alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_loggable:
+                        type: annotation
+                        prefix: Gedmo\Loggable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+                        alias: GedmoLoggable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+
+parameters:
+    assetic.cache.class: Assetic\Cache\ArrayCache
+
+stof_doctrine_extensions:
+    default_locale: %defaultlocale%
+    translation_fallback: true
+    orm:
+        default:
+            loggable: true
+            translatable: true
+            sluggable: true
+
+be_simple_i18n_routing:
+    attribute_translator:
+        type: translator
+
+jms_i18n_routing:
+    default_locale: %locale%
+    locales: [fr, en, de]
+    strategy: prefix
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Cz\I18Bundle\Entity\User

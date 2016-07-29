@@ -1,0 +1,4 @@
+services:
+#    cz_i18.example:
+#        class: Cz\I18Bundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

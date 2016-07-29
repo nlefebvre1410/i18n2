@@ -1,0 +1,15 @@
+cz_i18_lang:
+    resource: "@CzI18Bundle/Controller/LangController.php"
+    type:     annotation
+
+cz_i18_pages:
+    resource: "@CzI18Bundle/Controller/PagesController.php"
+    type:     annotation
+
+cz_i18:
+    resource: "@CzI18Bundle/Resources/config/routing.yml"
+    type: be_simple_i18n
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
