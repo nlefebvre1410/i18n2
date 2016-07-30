@@ -11,5 +11,15 @@ cz_i18:
     type: be_simple_i18n
     prefix:   /
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+cz_manager:
+    resource: "@CzManagerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cz_admin:
+    resource: "@CzAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+#    prefix:   /admin

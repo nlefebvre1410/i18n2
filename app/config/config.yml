@@ -15,7 +15,7 @@ framework:
 
 twig:
     globals:
-#        websitetitle: %websitetitle%
+        websitetitle: %websitetitle%
         defaultlocale: %defaultlocale%
 #        requiredlocales: %requiredlocales%
 #        gtm_code: %analytics.googletagmanager%
@@ -80,6 +80,7 @@ doctrine:
                         alias: GedmoTree # this one is optional and will default to the name set for the mapping
                         is_bundle: false
 
+
 parameters:
     assetic.cache.class: Assetic\Cache\ArrayCache
 
@@ -91,6 +92,9 @@ stof_doctrine_extensions:
             loggable: true
             translatable: true
             sluggable: true
+
+white_october_pagerfanta:
+    default_view: twitter_bootstrap
 
 be_simple_i18n_routing:
     attribute_translator:
@@ -104,4 +108,13 @@ jms_i18n_routing:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Cz\I18Bundle\Entity\User
+    user_class: Cz\ManagerBundle\Entity\User
+
+ekino_new_relic:
+    enabled:        true
+    logging:        false
+    log_exceptions: true
+    log_commands:   true
+    transaction_naming: service
+    transaction_naming_service: cz_newrelic_naming_strategy
+

@@ -1,0 +1,18 @@
+parameters:
+    czbundle-czmanager-class: 'Cz\ManagerBundle\Manager\CzManager'
+    cz_manager.menubuilder.class: 'Cz\ManagerBundle\Helper\Menu\MenuBuilder'
+
+services:
+     cz.czmanager:
+            class: %czbundle-czmanager-class%
+            arguments: ["@doctrine.orm.entity_manager"]
+
+     cz_manager.menubuilder:
+             class: '%cz_manager.menubuilder.class%'
+             arguments: ['@service_container']
+
+     cz_manager.menu.twig.extension:
+            class: Cz\ManagerBundle\Twig\MenuTwigExtension
+            arguments: ['@cz_manager.menubuilder']
+            tags:
+                -  { name: 'twig.extension' }

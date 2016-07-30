@@ -1,0 +1,55 @@
+{% extends '@CzI18/Frontend/Layout/layout.html.twig' %}
+
+{% block content  %}
+    <h1>Pages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Deletedat</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Seo</th>
+                <th>Entetetitle</th>
+                <th>Entetedescriptif</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Titlechanged</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for page in pages %}
+            <tr>
+                <td><a href="{{ path('pages_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
+                <td>{% if page.deletedAt %}{{ page.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ page.title }}</td>
+                <td>{{ page.slug }}</td>
+                <td>{{ page.seo }}</td>
+                <td>{{ page.entetetitle }}</td>
+                <td>{{ page.entetedescriptif }}</td>
+                <td>{% if page.created %}{{ page.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if page.updated %}{{ page.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if page.titleChanged %}{{ page.titleChanged|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pages_show', { 'id': page.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pages_edit', { 'id': page.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pages_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

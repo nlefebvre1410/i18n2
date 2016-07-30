@@ -18,3 +18,5 @@ parameters:
     secret:  ThisTokenIsNotSoSecretChangeIt
     session_prefix: czhotel
     doctrine.server_version: 5.6
+    use_assetic_controller: true
+    websitetitle: Project

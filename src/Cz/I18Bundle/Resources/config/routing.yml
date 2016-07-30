@@ -5,3 +5,6 @@ homepage:
 ruta_animales:
     locales:  {  en: "/en/animals/{tipo}", fr: "/fr/animales/{tipo}"}
     defaults: { _controller: AcmeMyBundle:Default:animales, _translate: "tipo"}
+index:
+    path:     /index
+    defaults: { _controller: CzI18Bundle:Acceuil:index }

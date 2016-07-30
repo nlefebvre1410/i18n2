@@ -9,33 +9,32 @@
     {{ sonata_seo_lang_alternates() }}
 
     {# Favicons #}
-    {% include '@CzI18bundle/Layout/_favicons.html.twig' %}
+    {#{% include '@CzI18/Layout/_favicons.html.twig' %}#}
 
     {# Webfonts #}
-    {% include 'CzHotelBundle:Layout:_webfonts.html.twig' %}
+    {#{% include 'CzHotelBundle:Layout:_webfonts.html.twig' %}#}
 
-    {# CSS #}
-    {% include '@'%}
+    {% include '@CzI18/Frontend/Layout/_css.html.twig' %}
 </head>
 {% endspaceless %}
 
 <body id="sidebar-toggle-container" class="sidebar-toggle-container{% block extra_body_classes %}{% endblock %}" {% block extra_body_attributes %}{% endblock %}>
     {# Google Tagmanager #}
-    {% include '@CzI18bundle/Layout/_googletagmanager.html.twig' %}
+    {#{% include '@CzI18/Layout/_googletagmanager.html.twig' %}#}
 
     {# Outdated browser message #}
-    {% include '@CzI18bundle/Layout/_outdatedbrowser.html.twig' %}
+    {#{% include '@CzI18/Layout/_outdatedbrowser.html.twig' %}#}
 
 
     {# Header #}
-    {% block header %}
-        {% include '@CzI18bundle/Layout/_header.html.twig' %}
-    {% endblock %}
+    {#{% block header %}#}
+        {#{% include '@CzI18/Layout/_header.html.twig' %}#}
+    {#{% endblock %}#}
 
     {# Breadcrumbs #}
-    {% block breadcrumbs %}
-        {% include '@CzI18bundle/Layout/_breadcrumbs.html.twig' %}
-    {% endblock %}
+    {#{% block breadcrumbs %}#}
+        {#{% include '@CzI18/Layout/_breadcrumbs.html.twig' %}#}
+    {#{% endblock %}#}
 
     {# Content #}
     <main role="main">
@@ -44,16 +43,16 @@
 
     {# Footer #}
     {% block footer %}
-        {% include '@CzI18bundle/Layout/_footer.html.twig' %}
+        {% include '@CzI18/Frontend/Layout/_footer.html.twig' %}
     {% endblock %}
 
 
     {# Cookieconsent #}
-    {% block cookieconsent %}
-        {% include '@CzI18bundle/Layout/_cookieconsent.html.twig' %}
-    {% endblock %}
+    {#{% block cookieconsent %}#}
+        {#{% include '@CzI18/Layout/_cookieconsent.html.twig' %}#}
+    {#{% endblock %}#}
 
     {# JS Footer #}
-    {% include '@CzI18bundle/Layout/_js_footer.html.twig' %}
+    {% include '@CzI18/Frontend/Layout/_js_footer.html.twig' %}
 </body>
 </html>

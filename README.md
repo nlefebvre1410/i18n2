@@ -17,4 +17,7 @@ app/console assets:install --symlink
 
 app/console assetic:dump
 ```
+```
+copie assets in web/
+```
 

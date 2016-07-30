@@ -1,0 +1,59 @@
+<?php
+
+namespace Cz\AdminBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class CarrouselType extends AbstractType
+{
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('format',ChoiceType::class,array('choices'=> array(
+                0 => 'Normal',
+                1 => 'Pleine largueur'
+
+            )))
+            ->add('fleches')
+            ->add('image',new MediaAdminType())
+            ->add('namecs', 'collection', [
+                'type' => new NamecType(),
+                'prototype' => true,
+
+                'label'=> false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ])
+
+
+
+
+
+        ;
+    }
+    
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Cz\AdminBundle\Entity\Carrousel'
+        ));
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'cz_adminbundle_carrousel';
+    }
+}

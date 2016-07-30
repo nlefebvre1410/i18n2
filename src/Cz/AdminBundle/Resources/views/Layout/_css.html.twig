@@ -1,0 +1,29 @@
+{% block css %}
+    {% stylesheets
+    "@CzAdminBundle/Resources/assets/css/bootstrap.css"
+    "@CzAdminBundle/Resources/assets/css/colors.css"
+    "@CzAdminBundle/Resources/assets/css/components.css"
+    "@CzAdminBundle/Resources/assets/css/core.css"
+    "@CzAdminBundle/Resources/assets/css/extras/animate.min.css"
+    "@CzAdminBundle/Resources/assets/css/stylesAdmin.css"
+    output="CzAdminBundleBundleAssets/css/style.min.css" filter='cssrewrite'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" >
+    {% endstylesheets %}
+{% endblock %}
+<script type="text/javascript" src="{{ asset('assets/js/plugins/loaders/pace.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/core/libraries/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
+<!-- /core JS files -->
+
+<!-- Theme JS files -->
+<script type="text/javascript" src="{{ asset('assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/forms/styling/switch.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('assets/js/core/app.js')}}') }}"></script>
+
+<script type="text/javascript" src="{{ asset('assets/js/pages/uploader_bootstrap.js') }}'"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/uploaders/fileinput.min.js') }}'"></script>
+<script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery_ui/full.min.js') }}'"></script>

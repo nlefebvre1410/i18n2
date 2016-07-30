@@ -1,0 +1,9 @@
+czadminbundle_default:
+    resource: "@CzAdminBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /admin
+
+czadminbundle_pages:
+    resource: "@CzAdminBundle/Controller/PagesCarrouselController.php"
+    type:     annotation
+    prefix:   /admin/pages

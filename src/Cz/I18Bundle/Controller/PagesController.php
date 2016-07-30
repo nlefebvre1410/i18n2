@@ -28,7 +28,7 @@ class PagesController extends Controller
 
         $pages = $em->getRepository('CzI18Bundle:Pages')->findAll();
 
-        return $this->render('pages/index.html.twig', array(
+        return $this->render('CzI18Bundle:pages:index.html.twig', array(
             'pages' => $pages,
         ));
     }
@@ -53,7 +53,7 @@ class PagesController extends Controller
             return $this->redirectToRoute('pages_show', array('id' => $page->getId()));
         }
 
-        return $this->render('pages/new.html.twig', array(
+        return $this->render('CzI18Bundle:pages:new.html.twig', array(
             'page' => $page,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class PagesController extends Controller
     {
         $deleteForm = $this->createDeleteForm($page);
 
-        return $this->render('pages/show.html.twig', array(
+        return $this->render('CzI18Bundle:pages:show.html.twig', array(
             'page' => $page,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class PagesController extends Controller
             return $this->redirectToRoute('pages_edit', array('id' => $page->getId()));
         }
 
-        return $this->render('pages/edit.html.twig', array(
+        return $this->render('CzI18Bundle:pages:edit.html.twig', array(
             'page' => $page,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

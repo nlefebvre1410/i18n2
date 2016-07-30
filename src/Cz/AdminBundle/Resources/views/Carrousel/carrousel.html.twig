@@ -1,0 +1,116 @@
+{% extends '@CzAdmin/Layout/layout.html.twig' %}
+
+{% block title %}CzAdminBundle:Carrousel:carrousel{% endblock %}
+
+{% block content %}
+    {{ form_start(form, {'action': path('pagescarrousel_create'), 'attr': {'class': 'form-horizontal'}}) }}
+    {% include '@CzAdmin/Layout/_header.global.html.twig' %}
+    <div class="row">
+        <div class="col-md-12">
+
+            {{ form_errors(form) }}
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">Basic layout</h5>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                                <li><a data-action="reload"></a></li>
+                                <li><a data-action="close"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <h6>Format</h6>
+                        <div class="form-group">
+                            {{ form_label(form.format, "Définit le format", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            <div class="col-lg-7">
+                                {{ form_widget(form.format, {'id': 'street_number', 'attr': {'class': 'form-control', 'placeholder': 'numVoie'}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.image, "Choisir une photo", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            <div class="col-lg-7">
+                                {{ form_widget(form.image, {'id': 'street_number'}) }}
+                            </div>
+                        </div>
+
+
+                        {% set prototype_for = form.namecs.vars.prototype %}
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Ecrire le texte</label>
+
+                            <div class="col-lg-7">
+                        <ul class="nav nav-pills tags" data-prototype="{{ form_widget(form.namecs.vars.prototype)|e('html_attr') }}"></ul>
+                        <div class="tab-content">
+                        <div class="tab-pane fade in active" id="fr"></div>
+                        <div class="tab-pane fade" id="en"></div>
+                        </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.fleches, "Flèches", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            <div class="col-lg-7">
+                                {{ form_widget(form.fleches) }}
+                            </div>
+                        </div>
+
+                        <div class="text-left">
+                            <a href="#" id="add-slide" class="btn btn-success">Ajouter un slide</a>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <script type="application/javascript">
+        var $addTagLink = $('<a href="#fr" data-toggle="tab">FRANCE</a>');
+        var $newLinkLi = $('<li class="active"></li>').append($addTagLink);
+        var $addTagLink2 = $('<a href="#en" data-toggle="tab">ENGLAIS</a>');
+        var $newLinkLi2 = $('<li></li>').append($addTagLink2);
+        var $ajout_slide = $('#add-slide');
+        var $content= $('content');
+
+
+
+        jQuery(document).ready(function() {
+            $ajout_slide.click(function(){
+                $("row").clone().appendTo("content");
+            });
+            var $collectionHolder = $('ul.tags');
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $collectionHolder.append($newLinkLi);
+            $collectionHolder.append($newLinkLi2);
+            var prototype = $collectionHolder.data('prototype');
+
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype.replace(/__name__/g, index );
+            var newForm1 = prototype.replace(/__name__/g, index + 1);
+            $collectionHolder.data('index', index + 1);
+
+
+            $('#fr').append(newForm);
+            $("#carrousel_namecs_0_lang").val('fr')
+            $("#carrousel_namecs_0_lang").addClass('hidden')
+
+
+            $('#en').append(newForm1);
+            $("#carrousel_namecs_1_lang").val('en')
+            $("#carrousel_namecs_1_lang").addClass('hidden')
+
+
+
+        });
+
+
+    </script>
+
+
+{% endblock %}
+

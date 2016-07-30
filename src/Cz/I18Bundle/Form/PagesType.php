@@ -17,11 +17,10 @@ class PagesType extends AbstractType
         $builder
 
             ->add('title')
-            ->add('slug')
+
             ->add('seo')
             ->add('entetetitle')
             ->add('entetedescriptif')
-
             ->add('lang')
         ;
     }
