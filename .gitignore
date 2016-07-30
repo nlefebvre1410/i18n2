@@ -30,3 +30,5 @@ web/Kunstmaan*BundleAssets/
 web/CzAdminBundleAssets
 web/assets
 /src/Cz/AdminBundle/Resources/assets/*
+app/Resources/vendor_bower/bootstrap-sass-official/assets/images/
+bin/
