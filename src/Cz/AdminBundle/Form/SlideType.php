@@ -4,11 +4,10 @@ namespace Cz\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CarrouselType extends AbstractType
+class SlideType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,12 +15,14 @@ class CarrouselType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('slides', CollectionType::class, array(
-            'entry_type' => SlideType::class,
-            'allow_add'    => true,
-            'by_reference' => false,
-            'allow_delete' => true,
-        ));
+        $builder->add('translations', 'a2lix_translations')
+        ->add('format',ChoiceType::class,array('choices'=> array(
+        0 => 'Normal',
+        1 => 'Pleine largueur'
+
+    )))
+        ->add('fleches')
+        ->add('image',new MediaAdminType());
     }
     
     /**
@@ -30,7 +31,7 @@ class CarrouselType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cz\AdminBundle\Entity\Carrousel'
+            'data_class' => 'Cz\AdminBundle\Entity\Slide'
         ));
     }
 
@@ -39,6 +40,6 @@ class CarrouselType extends AbstractType
      */
     public function getName()
     {
-        return 'cz_adminbundle_carrousel';
+        return 'cz_adminbundle_slide';
     }
 }

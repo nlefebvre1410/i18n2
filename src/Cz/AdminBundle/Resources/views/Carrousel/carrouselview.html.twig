@@ -1,0 +1,43 @@
+{% extends '@CzAdmin/Layout/layout.html.twig' %}
+
+{% block title %}CzAdminBundle:Carrousel:carrousel{% endblock %}
+
+{% block content %}
+    {% include '@CzAdmin/Layout/_header.global.html.twig' %}
+    <div class="row">
+        <div class="col-md-12">
+
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">Basic layout</h5>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                                <li><a data-action="reload"></a></li>
+                                <li><a data-action="close"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <h6>Format</h6>
+                        <div class="form-group">
+                            <div class="col-lg-7">
+                                {{ carrousel.id }}
+                                {% for slide in carrousel.slides %}
+
+                                    <li>{{ slide.format }}</li>
+                                    <li>{{ slide.fleches }}</li>
+                                    <li>{{ slide.title }}</li>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

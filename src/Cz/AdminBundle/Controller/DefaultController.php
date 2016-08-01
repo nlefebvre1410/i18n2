@@ -134,6 +134,54 @@ class DefaultController extends Controller
         return  array('form'=> $form->createView());
     }
 
+
+    /**
+     * @Route("/carrouseltestview/{id}" , name="CzAdminBundle_carrouseltestview")
+     * @Template("CzAdminBundle:Carrousel:carrouselview.html.twig")
+     */
+    public function carrouseltestviewAction($id)
+    {
+
+        $carrousel = $this->getDoctrine()
+            ->getRepository('CzAdminBundle:Carrousel')
+            ->findOneBy(array('id' => $id));
+
+        return array('carrousel' => $carrousel);
+
+    }
+
+
+
+    /**
+     * @Route("/carrouseltest" , name="CzAdminBundle_carrouseltest")
+     * @Template("CzAdminBundle:Carrousel:carrousel.html.twig")
+     */
+    public function carrouseltestAction(Request $request)
+    {
+
+        $carrousel = new Carrousel();
+        $form = $this->createForm(CarrouselType::class, $carrousel);
+
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $carrousel = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrousel);
+            $em->flush();
+
+            return $this->redirectToRoute('CzAdminBundle_carrouseltestview', array('id' => $carrousel->getId()));
+        }
+
+        return  array('form'=> $form->createView());
+    }
+
+
+
+
     /**
      * @Route("/personnalisation", name="CzAdminBundle_perso")
      * @Template("CzAdminBundle:Personnalisation:index.html.twig")

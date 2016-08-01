@@ -54,19 +54,11 @@ doctrine:
         entity_managers:
             default:
                 auto_mapping: true
+                filters:
+                    oneLocale:
+                        class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
+                        enabled: true
                 mappings:
-                    gedmo_translatable:
-                        type: annotation
-                        prefix: Gedmo\Translatable\Entity
-                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
-                        is_bundle: false
-                    gedmo_translator:
-                        type: annotation
-                        prefix: Gedmo\Translator\Entity
-                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
-                        alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
-                        is_bundle: false
                     gedmo_loggable:
                         type: annotation
                         prefix: Gedmo\Loggable\Entity
@@ -118,3 +110,14 @@ ekino_new_relic:
     transaction_naming: service
     transaction_naming_service: cz_newrelic_naming_strategy
 
+a2lix_translation_form:
+    locale_provider: default       # [1]
+    locales: [fr,en]          # [1-a]
+    default_locale: fr             # [1-b]
+    required_locales: [fr]         # [1-c]
+    manager_registry: doctrine      # [2]
+    templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
+
+
+a2lix_i18n_doctrine:
+    manager_registry: doctrine       # [1]
