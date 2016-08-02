@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Carrousel
  *
- * @ORM\Table(name="carrousel")
+ * @ORM\Table(name="cz_adminbundle_carrousel")
  * @ORM\Entity()
  */
 class Carrousel

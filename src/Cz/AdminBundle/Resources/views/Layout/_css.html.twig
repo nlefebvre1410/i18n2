@@ -27,3 +27,12 @@
 <script type="text/javascript" src="{{ asset('assets/js/pages/uploader_bootstrap.js') }}'"></script>
 <script type="text/javascript" src="{{ asset('assets/js/plugins/uploaders/fileinput.min.js') }}'"></script>
 <script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery_ui/full.min.js') }}'"></script>
+<script type="text/javascript" src="{{ asset('bundles/czadmin/js/plugins/visualization/echarts/echarts.js') }}'"></script>
+
+<script type="text/javascript">
+    require.config({
+        paths: {
+            echarts: './js/dist'
+        }
+    });
+</script>

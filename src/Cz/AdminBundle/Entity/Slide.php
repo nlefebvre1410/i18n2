@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Carrousel
  *
- * @ORM\Table(name="slide")
+ * @ORM\Table(name="cz_adminbundle_slide")
  * @ORM\Entity()
  */
 class Slide

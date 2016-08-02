@@ -1,3 +1,7 @@
+cz_admin_page:
+    resource: "@CzAdminBundle/Controller/PageController.php"
+    type:     annotation
+
 cz_i18_lang:
     resource: "@CzI18Bundle/Controller/LangController.php"
     type:     annotation

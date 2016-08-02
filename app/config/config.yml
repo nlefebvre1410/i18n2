@@ -97,10 +97,6 @@ jms_i18n_routing:
     locales: [fr, en, de]
     strategy: prefix
 
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Cz\ManagerBundle\Entity\User
 
 ekino_new_relic:
     enabled:        true

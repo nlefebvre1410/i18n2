@@ -27,7 +27,7 @@ $(function() {
     // Custom layout
     $('.file-input-custom').fileinput({
         previewFileType: 'image',
-        browseLabel: 'Sélectionner',
+        browseLabel: 'Select',
         browseClass: 'btn bg-slate-700',
         browseIcon: '<i class="icon-image2 position-left"></i> ',
         removeLabel: 'Remove',
@@ -38,7 +38,7 @@ $(function() {
         layoutTemplates: {
             icon: '<i class="icon-file-check"></i>'
         },
-        initialCaption: "Aucun fichier sélectionné",
+        initialCaption: "Please select image",
         mainClass: 'input-group'
     });
 

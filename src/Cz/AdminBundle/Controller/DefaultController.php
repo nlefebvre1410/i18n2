@@ -136,15 +136,15 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/carrouseltestview/{id}" , name="CzAdminBundle_carrouseltestview")
+     * @Route("/carrouseltestview/" , name="CzAdminBundle_carrouseltestview")
      * @Template("CzAdminBundle:Carrousel:carrouselview.html.twig")
      */
-    public function carrouseltestviewAction($id)
+    public function carrouseltestviewAction()
     {
 
         $carrousel = $this->getDoctrine()
             ->getRepository('CzAdminBundle:Carrousel')
-            ->findOneBy(array('id' => $id));
+            ->findAll();
 
         return array('carrousel' => $carrousel);
 
@@ -219,6 +219,36 @@ class DefaultController extends Controller
     {
         return $this->render("CzAdminBundle:Services:index.html.twig");
     }
+    /**
+     * @Route("/stats" , name="CzAdminBundle_stats")
+     * @Template()
+     */
+    public function statsAction(Request $request)
+    {
+
+        $form = $this->get('cz_handler_carrousel');
+        if($form->process()){
+            return $this->redirect($this->generateUrl("CzAdminBundle_homepage"));
+        }
+
+        return $this->render("CzAdminBundle:Stats:stats.html.twig", array( 'form'=> $form->createView()));
+    }
+
+
+
+
+    /**
+     * @Route("/ajax/piwik" , name="CzAdminBundle_stats_piwik")
+     */
+    public function piwikAction(Request $request)
+    {
+        $visit = $request->get('visit', 'all');
+        $range = $request->get('range', 'hour');
+
+        echo $this->get('cz_manager.piwik')->getVisitsByRange($visit, $range);
+        exit;
+    }
+
     /**
      * @Route("/test", name="CzAdminBundle_test")
      * @Template()
