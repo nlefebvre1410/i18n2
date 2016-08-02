@@ -47,6 +47,12 @@ class PiwikAPI {
         $sumAll  = 0;
         $sumUniq = 0;
 
+        if ($range == 'hour') {
+            for ($i = 0; $i <= 23; $i++) {
+                $return[$i.""] = 0;
+            }
+        }
+
 
         foreach ($results as $result)
         {
@@ -92,7 +98,8 @@ class PiwikAPI {
         {
             $date = (new \DateTime('now'))->format('Y').'-01-01';
             $end = (new \DateTime('now'))->format('Y').'-12-31';
-            $period = $date.",".$end;
+            $date = $date.",".$end;
+            $period = "month";
             $format = 'm/y';
         }
         if ($range == 'day')
